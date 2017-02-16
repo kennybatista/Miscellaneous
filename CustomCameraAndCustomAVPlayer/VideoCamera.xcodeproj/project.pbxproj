@@ -98,9 +98,9 @@
 		2557BBFE1E4EE8A0009B09FD /* VideoCamera */ = {
 			isa = PBXGroup;
 			children = (
+				25E735551E5396980075F709 /* MyPlayground.playground */,
 				2557BBFF1E4EE8A0009B09FD /* AppDelegate.swift */,
 				2557BC011E4EE8A0009B09FD /* ViewController.swift */,
-				25E735551E5396980075F709 /* MyPlayground.playground */,
 				2557BC031E4EE8A0009B09FD /* Main.storyboard */,
 				2557BC061E4EE8A0009B09FD /* Assets.xcassets */,
 				2557BC081E4EE8A0009B09FD /* LaunchScreen.storyboard */,

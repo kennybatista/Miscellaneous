@@ -46,6 +46,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpVideoPreview()
+        
+        cameraButton.layer.cornerRadius = 10
+        
     }
     
     func setUpVideoPreview(){
@@ -90,8 +93,81 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         view.bringSubview(toFront: switchCamOutlet)
         
         captureSession.startRunning()
+        
+        
+        captureSession.beginConfiguration()
+        
+        // Add audio device to the recording
+        let audioDevice: AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        do {
+            let audioInput: AVCaptureDeviceInput = try AVCaptureDeviceInput(device: audioDevice)
+            self.captureSession.addInput(audioInput)
+            
+        } catch {
+            print("Unable to add audio device to the recording.")
+        }
+        
+        captureSession.commitConfiguration()
 
     }
+    
+    
+    
+
+    
+    func cameraWith(position: AVCaptureDevicePosition) -> AVCaptureDevice! {
+        let discovery = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera, AVCaptureDeviceType.builtInDualCamera], mediaType: AVMediaTypeVideo, position: .unspecified) as AVCaptureDeviceDiscoverySession
+        
+        for device in discovery.devices as [AVCaptureDevice] {
+            if device.position == position {
+                return device
+            }
+        }
+        
+        return nil
+    }
+    
+    
+    
+    
+    
+    
+    func toggleCameraInput() {
+        self.captureSession.beginConfiguration()
+        
+        var existingConnection: AVCaptureDeviceInput!
+        
+        for connection in self.captureSession.inputs {
+            let input = connection as! AVCaptureDeviceInput
+            
+            if input.device.hasMediaType(AVMediaTypeVideo) {
+                existingConnection = input
+            }
+        }
+        
+        self.captureSession.removeInput(existingConnection)
+        
+        
+        var newCamera: AVCaptureDevice!
+        
+        if let oldCamera = existingConnection {
+            if oldCamera.device.position == .front {
+                newCamera = self.cameraWith(position: .back)
+            } else {
+                newCamera = self.cameraWith(position: .front)
+            }
+        }
+        
+        do {
+            let newInput = try AVCaptureDeviceInput(device: newCamera)
+            self.captureSession.addInput(newInput)
+        } catch {
+            print(error)
+        }
+        
+        self.captureSession.commitConfiguration()
+    }
+    
     
     
     @IBAction func capture(_ sender: Any) {
@@ -143,11 +219,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @IBAction func switchCam(_ sender: Any) {
-        
-//        captureDevice = (AVCaptureDevice.devices() as? [AVCaptureDevice])?
-//            .filter({ $0.hasMediaType(AVMediaTypeVideo) && $0.position == .front}).first
         print(#function)
-        setUpVideoPreview()
+        toggleCameraInput()
+        
     }
     
     
