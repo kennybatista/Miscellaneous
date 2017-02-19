@@ -24,7 +24,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // 
     var videoFileOutput: AVCaptureMovieFileOutput?
     
-    var cameraPreviewLayer:AVCaptureVideoPreviewLayer?
+    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     var isRecording = false
     
