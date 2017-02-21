@@ -31,14 +31,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // Set up AVPlayer
     fileprivate var videoURL: URL!
     
-    fileprivate var asset: AVURLAsset!
-    fileprivate var playerItem: AVPlayerItem!
-    fileprivate var player: AVPlayer!
-    fileprivate var playerLayer: AVPlayerLayer!
-    
-    
-    //playercontroller
-    
     
     
     @IBOutlet weak var switchCamOutlet: UIButton!
@@ -71,6 +63,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         //[]
+        
         
         videoFileOutput = AVCaptureMovieFileOutput()
         
@@ -203,19 +196,10 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
             return
         }
         
-
-        asset = AVURLAsset(url: fileURL)
-        playerItem = AVPlayerItem(asset: asset)
-        player = AVPlayer(playerItem: playerItem)
+        // When finished recording, pass the file url to our modular video component and play it
+        let videoPlayer = VideoPlayerViewController(urlPasser: fileURL)
+        present(videoPlayer, animated: true, completion: nil)
         
-        playerLayer = AVPlayerLayer(player: player)
-        
-        playerLayer.frame = view.bounds
-        
-        
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        present(playerViewController, animated: true, completion: nil)
     }
     
     @IBAction func switchCam(_ sender: Any) {

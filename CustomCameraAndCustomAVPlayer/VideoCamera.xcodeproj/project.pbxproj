@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251F61BB1E5CC1EF0059CB9A /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251F61BA1E5CC1EF0059CB9A /* VideoPlayerViewController.swift */; };
 		2557BC001E4EE8A0009B09FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557BBFF1E4EE8A0009B09FD /* AppDelegate.swift */; };
 		2557BC021E4EE8A0009B09FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557BC011E4EE8A0009B09FD /* ViewController.swift */; };
 		2557BC051E4EE8A0009B09FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2557BC031E4EE8A0009B09FD /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		251F61BA1E5CC1EF0059CB9A /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		2557BBFC1E4EE8A0009B09FD /* VideoCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2557BBFF1E4EE8A0009B09FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2557BC011E4EE8A0009B09FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				25E735551E5396980075F709 /* MyPlayground.playground */,
 				2557BBFF1E4EE8A0009B09FD /* AppDelegate.swift */,
 				2557BC011E4EE8A0009B09FD /* ViewController.swift */,
+				251F61BA1E5CC1EF0059CB9A /* VideoPlayerViewController.swift */,
 				2557BC031E4EE8A0009B09FD /* Main.storyboard */,
 				2557BC061E4EE8A0009B09FD /* Assets.xcassets */,
 				2557BC081E4EE8A0009B09FD /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251F61BB1E5CC1EF0059CB9A /* VideoPlayerViewController.swift in Sources */,
 				2557BC021E4EE8A0009B09FD /* ViewController.swift in Sources */,
 				2557BC001E4EE8A0009B09FD /* AppDelegate.swift in Sources */,
 			);
