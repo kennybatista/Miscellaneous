@@ -14,6 +14,7 @@
 		2528BF001E5240C300D613DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2528BEFE1E5240C300D613DC /* LaunchScreen.storyboard */; };
 		2528BF0B1E5240C300D613DC /* PHuntWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528BF0A1E5240C300D613DC /* PHuntWrapperTests.swift */; };
 		2528BF161E5240C300D613DC /* PHuntWrapperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528BF151E5240C300D613DC /* PHuntWrapperUITests.swift */; };
+		25AD3B011E5E61510076EA8F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD3B001E5E61510076EA8F /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2528BF111E5240C300D613DC /* PHuntWrapperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PHuntWrapperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2528BF151E5240C300D613DC /* PHuntWrapperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHuntWrapperUITests.swift; sourceTree = "<group>"; };
 		2528BF171E5240C300D613DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25AD3B001E5E61510076EA8F /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				2528BEF51E5240C300D613DC /* AppDelegate.swift */,
 				2528BEF71E5240C300D613DC /* ViewController.swift */,
+				25AD3B001E5E61510076EA8F /* ProductModel.swift */,
 				2528BEF91E5240C300D613DC /* Main.storyboard */,
 				2528BEFC1E5240C300D613DC /* Assets.xcassets */,
 				2528BEFE1E5240C300D613DC /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2528BEF81E5240C300D613DC /* ViewController.swift in Sources */,
+				25AD3B011E5E61510076EA8F /* ProductModel.swift in Sources */,
 				2528BEF61E5240C300D613DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +518,7 @@
 				2528BF1C1E5240C300D613DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2528BF1D1E5240C300D613DC /* Build configuration list for PBXNativeTarget "PHuntWrapperTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +527,7 @@
 				2528BF1F1E5240C300D613DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2528BF201E5240C300D613DC /* Build configuration list for PBXNativeTarget "PHuntWrapperUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +536,7 @@
 				2528BF221E5240C300D613DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

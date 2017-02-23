@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import AVKit
+
 
 
 class VideoPlayerViewController: UIViewController {
@@ -30,6 +30,10 @@ class VideoPlayerViewController: UIViewController {
     //player layer 
     fileprivate var playerLayer: AVPlayerLayer!
     
+    
+    fileprivate var timeObserver: AnyObject!
+    fileprivate var timeRemainingLabel: UILabel!
+    
 // [End - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
 
     
@@ -42,6 +46,8 @@ class VideoPlayerViewController: UIViewController {
         self.item = AVPlayerItem(asset: asset)
         self.player = AVPlayer(playerItem: item)
         self.playerLayer = AVPlayerLayer(player: player)
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,7 +60,23 @@ class VideoPlayerViewController: UIViewController {
         super.viewDidLoad()
         loadView()
         player.play()
-        // Do any additional setup after loading the view.
+        
+        
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main, using: {
+            elapsedTime in
+            print("elapsedTime now", CMTimeGetSeconds(elapsedTime))
+            self.observeTime(elapsedTime: elapsedTime)
+        }) as AnyObject!
+        
+        
+        
+        
+        
+    }
+    
+    deinit {
+        player.removeTimeObserver(timeObserver)
     }
     
     override func loadView() {
@@ -74,7 +96,42 @@ class VideoPlayerViewController: UIViewController {
         playerLayer.borderWidth = 5
         playerLayer.backgroundColor = UIColor.blue.cgColor
         playerLayer.masksToBounds = true
+        
+        
+        
+        
+        let controlsHeight: CGFloat = 30
+        let controlsY: CGFloat = view.bounds.size.height - controlsHeight
+        // Time remaining label
+        timeRemainingLabel = UILabel(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
+        timeRemainingLabel.textColor = .red
+        
+       
+        view.addSubview(timeRemainingLabel)
+        
+        
     }
+    
+    
+    
+    fileprivate func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
+        let timeRemaining: Float64 = CMTimeGetSeconds(player.currentItem!.duration) - elapsedTime
+        timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+    }
+    
+    fileprivate func observeTime(elapsedTime: CMTime) {
+        let duration = CMTimeGetSeconds((player.currentItem?.duration)!)
+        let elapsedTime = CMTimeGetSeconds(elapsedTime)
+        updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
+        
+    }
+    
+    
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
