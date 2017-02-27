@@ -39,6 +39,27 @@ class MainViewController: UIViewController, AVCaptureFileOutputRecordingDelegate
     fileprivate var videoURL: URL!
     
     
+    @IBOutlet weak var flashButtonOutlet: UIButton!
+    @IBAction func flash(_ sender: Any) {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if (device?.hasTorch)! {
+            do {
+                try device?.lockForConfiguration()
+                if device?.torchMode == AVCaptureTorchMode.on {
+                    device?.torchMode = AVCaptureTorchMode.off
+                } else {
+                    do {
+                        try device?.setTorchModeOnWithLevel(1.0)
+                    } catch {
+                        print(error)
+                    }
+                }
+                device?.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
+    }
     
    
     
@@ -48,7 +69,7 @@ class MainViewController: UIViewController, AVCaptureFileOutputRecordingDelegate
         
         cameraButton.layer.cornerRadius = 10
         
-        
+        view.bringSubview(toFront: flashButtonOutlet)
         
     }
     

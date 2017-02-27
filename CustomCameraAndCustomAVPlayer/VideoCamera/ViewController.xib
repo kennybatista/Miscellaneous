@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="VideoCamera" customModuleProvider="target">
             <connections>
                 <outlet property="cameraButton" destination="wBO-KQ-bMH" id="EIB-DS-5BP"/>
+                <outlet property="flashButtonOutlet" destination="xLC-N6-NKU" id="J8w-6Z-c2b"/>
                 <outlet property="switchCamOutlet" destination="DXH-jE-NlC" id="PBA-Q4-iej"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="8CA-PW-d8z"/>
             </connections>
@@ -21,21 +22,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-jE-NlC">
-                    <rect key="frame" x="142" y="33" width="91" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-jE-NlC">
+                    <rect key="frame" x="320" y="31" width="39" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="2 switch cam"/>
+                    <state key="normal" image="switchCam"/>
                     <connections>
                         <action selector="switchCam:" destination="-1" eventType="touchUpInside" id="Uu2-H3-c1T"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBO-KQ-bMH">
-                    <rect key="frame" x="131" y="593" width="91" height="54"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBO-KQ-bMH">
+                    <rect key="frame" x="150" y="573" width="74" height="74"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.81691408160000001" green="0.111945428" blue="0.10684419420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="record"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="PreRecordOval"/>
                     <connections>
                         <action selector="capture:" destination="-1" eventType="touchUpInside" id="DGd-du-dVM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLC-N6-NKU">
+                    <rect key="frame" x="274" y="31" width="22" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="flash"/>
+                    <connections>
+                        <action selector="flash:" destination="-1" eventType="touchUpInside" id="sF1-EW-HNO"/>
                     </connections>
                 </button>
             </subviews>
@@ -43,4 +52,9 @@
             <point key="canvasLocation" x="32.5" y="72.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="PreRecordOval" width="522" height="522"/>
+        <image name="flash" width="38" height="59"/>
+        <image name="switchCam" width="50" height="40"/>
+    </resources>
 </document>

@@ -13,7 +13,7 @@ import AVFoundation
 
 class VideoPlayerViewController: UIViewController {
     
-    // [Start - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
+    // [Start of - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
     
     //url to get media from
     fileprivate var url: URL!
@@ -40,8 +40,6 @@ class VideoPlayerViewController: UIViewController {
     
     var playerRateBeforeSeek: Float = 0
     
-    
-
     
     
     @IBOutlet weak var backwardsButtonOutlet: UIButton!
@@ -110,11 +108,7 @@ class VideoPlayerViewController: UIViewController {
             print("elapsedTime now", CMTimeGetSeconds(elapsedTime))
             self.observeTime(elapsedTime: elapsedTime)
             
-            
-            
         }) as AnyObject!
-        
-        
         
         
         playPauseBool = false
@@ -144,17 +138,9 @@ class VideoPlayerViewController: UIViewController {
         playerLayer.masksToBounds = true
         
         
-        
-        
         playOrPauseButtonOutlet.bringSubview(toFront: self.view)
         backwardsButtonOutlet.bringSubview(toFront: self.view)
         forwardButtonOutlet.bringSubview(toFront: self.view)
-        
-        
-        // Time remaining label
-        
-        
-        
         
         //add to subview
         VideoPlayerView.addSubview(timeRemainingLabel)
@@ -162,7 +148,6 @@ class VideoPlayerViewController: UIViewController {
         VideoPlayerView.addSubview(backwardsButtonOutlet)
         VideoPlayerView.addSubview(playOrPauseButtonOutlet)
         VideoPlayerView.addSubview(videoPlayerContainerView)
-//        progressView.layer.cornerRadius = 10
         videoPlayerContainerView.layer.cornerRadius = 7
         videoPlayerContainerView.addSubview(progressView)
         
@@ -171,10 +156,7 @@ class VideoPlayerViewController: UIViewController {
         VideoPlayerView.layer.shadowOpacity = 0.7
         VideoPlayerView.layer.shadowOffset = CGSize.zero
         VideoPlayerView.layer.shadowRadius = 5
-        
- 
- 
-        
+  
     }
     
     
@@ -247,5 +229,5 @@ class VideoPlayerViewController: UIViewController {
     
     
     
-    //[END - METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
+    //[END of - METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
 }
