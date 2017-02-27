@@ -32,15 +32,16 @@ class VideoPlayerViewController: UIViewController {
     
     // Time Remaining
     fileprivate var timeObserver: AnyObject!
-    fileprivate var timeRemainingLabel: UILabel!
+
     
+    @IBOutlet weak var timeRemainingLabel: UILabel!
     // Seeker buttons
+    @IBOutlet weak var videoPlayerContainerView: UIView!
+    
     var playerRateBeforeSeek: Float = 0
     
     
-    //    var seekFiveSecondsFowardButton: UIButton!
-    //    var seekFiveSecondsBackwardButton: UIButton!
-    //    var playOrPauseButton: UIButton!
+
     
     
     @IBOutlet weak var backwardsButtonOutlet: UIButton!
@@ -49,27 +50,28 @@ class VideoPlayerViewController: UIViewController {
     
     @IBOutlet weak var forwardButtonOutlet: UIButton!
     
+    @IBOutlet weak var progressView: UIProgressView!
     
-    //    @IBAction func seekFiveSecondsBackwardButton(_ sender: Any) {
-    //        seekForward()
-    //    }
-    //
-    //    @IBAction func playOrPauseButton(_ sender: Any) {
-    //        seekBackward()
-    //    }
-    //
-    //
-    //    @IBAction func seekFiveSecondsForwardButton(_ sender: Any) {
-    //        pauseOrPlay()
-    //    }
     
+    
+    @IBAction func seekFiveSecondsBackwardButton(_ sender: Any) {
+        seekBackward()
+    }
+    
+    @IBAction func playOrPauseButton(_ sender: Any) {
+        pauseOrPlay()
+    }
+    
+    @IBAction func seekFiveSecondsForwardButton(_ sender: Any) {
+        seekForward()
+    }
     
     var playPauseBool: Bool!
     
+    @IBOutlet weak var VideoPlayerView: UIView!
     
     
-    
-    @IBOutlet var controllerXibViewOutlet: UIView!
+ 
     
     
     // [End - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
@@ -79,7 +81,7 @@ class VideoPlayerViewController: UIViewController {
     
  
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, urlPasser: URL){
+    init(urlPasser: URL){
         self.url = URL(string: String(describing: urlPasser))
         self.asset = AVURLAsset(url: url)
         self.item = AVPlayerItem(asset: asset)
@@ -99,6 +101,8 @@ class VideoPlayerViewController: UIViewController {
         loadView()
         player.play()
         
+        timeRemainingLabel.layer.cornerRadius = 10
+        
         // time remaining
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main, using: {
@@ -113,11 +117,9 @@ class VideoPlayerViewController: UIViewController {
         
         
         
-        playPauseBool = true
+        playPauseBool = false
         
-//        self.view.addSubview(controllerXibViewOutlet)
-        
-        //        forwardButtonOutlet.bringSubview(toFront: self.view)
+       
     }
     
     deinit {
@@ -126,9 +128,9 @@ class VideoPlayerViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-//        view.backgroundColor = .yellow
-//        view.layer.addSublayer(playerLayer)
         
+        VideoPlayerView.layer.addSublayer(playerLayer)
+        VideoPlayerView.backgroundColor = UIColor.clear
         
     }
     
@@ -136,44 +138,42 @@ class VideoPlayerViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerLayer.borderColor = UIColor.red.cgColor
         playerLayer.cornerRadius = 10
-        //        playerLayer.frame = view.bounds
-        playerLayer.frame = CGRect(x: 50, y: 50, width: 300, height: 300)
-        playerLayer.borderWidth = 5
-        playerLayer.backgroundColor = UIColor.red.cgColor
+        playerLayer.frame = VideoPlayerView.bounds
+        playerLayer.backgroundColor = UIColor.clear.cgColor
         playerLayer.masksToBounds = true
         
         
         
         
+        playOrPauseButtonOutlet.bringSubview(toFront: self.view)
+        backwardsButtonOutlet.bringSubview(toFront: self.view)
+        forwardButtonOutlet.bringSubview(toFront: self.view)
+        
         
         // Time remaining label
-        timeRemainingLabel = UILabel(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
-        timeRemainingLabel.frame = CGRect(x: 5, y: 10, width: 60, height: 30)
-        timeRemainingLabel.textColor = .red
-        
-//        view.addSubview(timeRemainingLabel)
         
         
         
-        //        seekFiveSecondsFowardButton = UIButton(frame: CGRect(x: 50, y: 100, width: 100, height: 100))
-        //        seekFiveSecondsBackwardButton = UIButton(frame: CGRect(x: 150, y: 200, width: 100, height: 100))
-        //        playOrPauseButton = UIButton(frame: CGRect(x: 250, y: 300, width: 100, height: 100))
         
-        //        seekFiveSecondsFowardButton.setTitle("Forward", for: .normal)
-        //        seekFiveSecondsBackwardButton.setTitle("Backward", for: .normal)
-        //        playOrPauseButton.setTitle("PlayPause", for: .normal)
+        //add to subview
+        VideoPlayerView.addSubview(timeRemainingLabel)
+        VideoPlayerView.addSubview(forwardButtonOutlet)
+        VideoPlayerView.addSubview(backwardsButtonOutlet)
+        VideoPlayerView.addSubview(playOrPauseButtonOutlet)
+        VideoPlayerView.addSubview(videoPlayerContainerView)
+//        progressView.layer.cornerRadius = 10
+        videoPlayerContainerView.layer.cornerRadius = 7
+        videoPlayerContainerView.addSubview(progressView)
         
-        //        seekFiveSecondsFowardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekForward(button:elapsedTime:)), for: .touchUpInside)
-        //        seekFiveSecondsBackwardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekBackward(button:elapsedTime:)), for: .touchUpInside)
-        //        playOrPauseButton.addTarget(self, action: #selector(VideoPlayerViewController.pauseOrPlay(button:)), for: .touchUpInside)
+        //Shadows
+        VideoPlayerView.layer.shadowColor = UIColor.black.cgColor
+        VideoPlayerView.layer.shadowOpacity = 0.7
+        VideoPlayerView.layer.shadowOffset = CGSize.zero
+        VideoPlayerView.layer.shadowRadius = 5
         
-        //        view.addSubview(seekFiveSecondsFowardButton)
-        //        view.addSubview(seekFiveSecondsBackwardButton)
-        //        view.addSubview(playOrPauseButton)
-        
-        
+ 
+ 
         
     }
     
@@ -188,7 +188,9 @@ class VideoPlayerViewController: UIViewController {
         //updtae time label
         updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
         
-        //seek forward/backwards
+        //track progresss
+        progressView.progress = Float(elapsedTime / duration)
+        
     }
     
     fileprivate func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
@@ -225,9 +227,11 @@ class VideoPlayerViewController: UIViewController {
         print(#function)
         if playPauseBool == false {
             playPauseBool = true
+            playOrPauseButtonOutlet.setImage(UIImage(named: "Play.png"), for: .normal)
             player.pause()
         } else if playPauseBool == true {
             playPauseBool = false
+            playOrPauseButtonOutlet.setImage(UIImage(named: "Pause.png"), for: .normal)
             player.play()
         }
     }

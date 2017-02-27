@@ -104,10 +104,8 @@
 			children = (
 				25E735551E5396980075F709 /* MyPlayground.playground */,
 				2557BBFF1E4EE8A0009B09FD /* AppDelegate.swift */,
-				25FBD7AB1E63E40E0076537A /* MainViewController.swift */,
-				25FBD7AC1E63E40E0076537A /* ViewController.xib */,
-				25FBD7A71E63DE480076537A /* VideoPlayerViewController.swift */,
-				25FBD7A81E63DE480076537A /* VideoPlayerViewController.xib */,
+				25FBD7B01E64216F0076537A /* Custom Camera */,
+				25FBD7AF1E64213E0076537A /* VideoPlayer */,
 				2557BC061E4EE8A0009B09FD /* Assets.xcassets */,
 				2557BC081E4EE8A0009B09FD /* LaunchScreen.storyboard */,
 				2557BC0B1E4EE8A0009B09FD /* Info.plist */,
@@ -131,6 +129,24 @@
 				2557BC211E4EE8A1009B09FD /* Info.plist */,
 			);
 			path = VideoCameraUITests;
+			sourceTree = "<group>";
+		};
+		25FBD7AF1E64213E0076537A /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				25FBD7A71E63DE480076537A /* VideoPlayerViewController.swift */,
+				25FBD7A81E63DE480076537A /* VideoPlayerViewController.xib */,
+			);
+			name = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		25FBD7B01E64216F0076537A /* Custom Camera */ = {
+			isa = PBXGroup;
+			children = (
+				25FBD7AB1E63E40E0076537A /* MainViewController.swift */,
+				25FBD7AC1E63E40E0076537A /* ViewController.xib */,
+			);
+			name = "Custom Camera";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

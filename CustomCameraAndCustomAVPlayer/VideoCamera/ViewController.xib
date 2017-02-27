@@ -30,7 +30,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBO-KQ-bMH">
-                    <rect key="frame" x="165" y="608" width="45" height="30"/>
+                    <rect key="frame" x="131" y="593" width="91" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.81691408160000001" green="0.111945428" blue="0.10684419420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="record"/>
@@ -40,7 +40,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="33" y="73"/>
+            <point key="canvasLocation" x="32.5" y="72.5"/>
         </view>
     </objects>
 </document>
