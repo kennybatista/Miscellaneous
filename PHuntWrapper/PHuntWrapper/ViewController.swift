@@ -28,7 +28,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         //break enpoint into components
         urlComponents = URLComponents()
@@ -68,20 +67,17 @@ class ViewController: UIViewController {
             if data != nil {
                 
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                    print(json)
+                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+//                    print(json)
+                    
+                    let flatMappedJSON = json.flatMap { $0.key }
+                    print(flatMappedJSON)
                     
                 } catch {
                     print("Error")
                 }
             }
         })
-    
-    
-        
-        
-        
-        
         task.resume()
         
         

@@ -15,7 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Initialize the window --- can also use window = window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        
+        // Set background color of window
+//        window?.backgroundColor = UIColor.gray
+        
+        //Allocate memory for an instance of the "MainViewController" class
+        let mainViewController = MainViewController(nibName: "ViewController", bundle: nil)
+        
+        // Set teh root view controller of the app's window
+        window?.rootViewController = mainViewController
+        
+        //make the window visible and make it the main window
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -43,4 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
+
 

@@ -13,10 +13,31 @@ class ProductModel {
     var productNumberOfVotes: Int!
     var productThumbnail: String!
     
-    init(productName: String, productTagline: String, productNumberOfVotes: Int, productThumbnail: String) {
-        self.productName = productName
-        self.productTagline = productTagline
-        self.productNumberOfVotes = productNumberOfVotes
-        self.productThumbnail = productThumbnail
+    init?(productName: String?, productTagline: String?, productNumberOfVotes: Int?, productThumbnail: String?) {
+        
+        if productName != nil {
+            self.productName = productName
+        } else {
+            print(productName!, " is nil")
+        }
+        
+        if productTagline != nil {
+            self.productTagline = productTagline
+        } else {
+            print(productTagline!, " is nil")
+        }
+        
+        if productNumberOfVotes != nil {
+            self.productNumberOfVotes = productNumberOfVotes
+        } else {
+            print(productNumberOfVotes!, " is nil")
+        }
+        
+        if productThumbnail != nil {
+            self.productThumbnail = productThumbnail
+        } else {
+            print(productThumbnail!, " is nil")
+        }
+  
     }
 }

@@ -12,16 +12,23 @@ import AVFoundation
 //controls video output such as user controls and captions
 import AVKit
 
-class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+class MainViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+
+    
+    
+    
     @IBOutlet weak var cameraButton: UIButton!
-//[]
+    
+     @IBOutlet weak var switchCamOutlet: UIButton!
+    
+    //[]
     //start/stop recording. use the preset to change output quality
     let captureSession = AVCaptureSession()
-
+    
     // find out the camera devices
     var currentDevice: AVCaptureDevice?
     
-    // 
+    //
     var videoFileOutput: AVCaptureMovieFileOutput?
     
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -33,7 +40,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     
     
-    @IBOutlet weak var switchCamOutlet: UIButton!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +48,12 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         cameraButton.layer.cornerRadius = 10
         
+        
+        
     }
+    
+    
+    
     
     func setUpVideoPreview(){
         // Do any additional setup after loading the view, typically from a nib.
@@ -101,12 +113,15 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         captureSession.commitConfiguration()
-
+        
+        
+        
+        
     }
     
     
     
-
+    
     
     func cameraWith(position: AVCaptureDevicePosition) -> AVCaptureDevice! {
         let discovery = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera, AVCaptureDeviceType.builtInDualCamera], mediaType: AVMediaTypeVideo, position: .unspecified) as AVCaptureDeviceDiscoverySession
@@ -188,8 +203,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
             
             
         }
-    }
 
+    }
+   
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         if error != nil {
             print(error)
@@ -197,24 +213,27 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         // When finished recording, pass the file url to our modular video component and play it
-        let videoPlayer = VideoPlayerViewController(urlPasser: fileURL)
+        let videoPlayer = VideoPlayerViewController(nibName: "VideoPlayerViewController", bundle: nil, urlPasser: fileURL)
         present(videoPlayer, animated: true, completion: nil)
         
+        
     }
+    
+    
+
     
     @IBAction func switchCam(_ sender: Any) {
         print(#function)
         toggleCameraInput()
-        
     }
-    
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
+    
 }
 

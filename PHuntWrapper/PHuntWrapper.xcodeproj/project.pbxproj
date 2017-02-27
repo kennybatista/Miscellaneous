@@ -49,6 +49,7 @@
 		2528BF151E5240C300D613DC /* PHuntWrapperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHuntWrapperUITests.swift; sourceTree = "<group>"; };
 		2528BF171E5240C300D613DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AD3B001E5E61510076EA8F /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		25FBD7A21E60BF640076537A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2528BEF51E5240C300D613DC /* AppDelegate.swift */,
+				25FBD7A21E60BF640076537A /* MyPlayground.playground */,
 				2528BEF71E5240C300D613DC /* ViewController.swift */,
 				25AD3B001E5E61510076EA8F /* ProductModel.swift */,
 				2528BEF91E5240C300D613DC /* Main.storyboard */,

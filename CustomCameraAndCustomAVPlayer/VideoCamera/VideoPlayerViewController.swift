@@ -13,7 +13,7 @@ import AVFoundation
 
 class VideoPlayerViewController: UIViewController {
     
-// [Start - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
+    // [Start - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
     
     //url to get media from
     fileprivate var url: URL!
@@ -27,7 +27,7 @@ class VideoPlayerViewController: UIViewController {
     // player
     fileprivate var player: AVPlayer!
     
-    //player layer 
+    //player layer
     fileprivate var playerLayer: AVPlayerLayer!
     
     // Time Remaining
@@ -36,29 +36,56 @@ class VideoPlayerViewController: UIViewController {
     
     // Seeker buttons
     var playerRateBeforeSeek: Float = 0
-    var seekFiveSecondsFowardButton: UIButton!
-    var seekFiveSecondsBackwardButton: UIButton!
-    var playOrPauseButton: UIButton!
+    
+    
+    //    var seekFiveSecondsFowardButton: UIButton!
+    //    var seekFiveSecondsBackwardButton: UIButton!
+    //    var playOrPauseButton: UIButton!
+    
+    
+    @IBOutlet weak var backwardsButtonOutlet: UIButton!
+    
+    @IBOutlet weak var playOrPauseButtonOutlet: UIButton!
+    
+    @IBOutlet weak var forwardButtonOutlet: UIButton!
+    
+    
+    //    @IBAction func seekFiveSecondsBackwardButton(_ sender: Any) {
+    //        seekForward()
+    //    }
+    //
+    //    @IBAction func playOrPauseButton(_ sender: Any) {
+    //        seekBackward()
+    //    }
+    //
+    //
+    //    @IBAction func seekFiveSecondsForwardButton(_ sender: Any) {
+    //        pauseOrPlay()
+    //    }
+    
+    
     var playPauseBool: Bool!
     
     
-
-
     
-// [End - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
-
+    
+    @IBOutlet var controllerXibViewOutlet: UIView!
+    
+    
+    // [End - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
+    
     
     //START - [METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
     
-    public init(urlPasser: URL) {
-        super.init(nibName: nil, bundle: nil)
+ 
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, urlPasser: URL){
         self.url = URL(string: String(describing: urlPasser))
         self.asset = AVURLAsset(url: url)
         self.item = AVPlayerItem(asset: asset)
         self.player = AVPlayer(playerItem: item)
         self.playerLayer = AVPlayerLayer(player: player)
-        
-        
+        super.init(nibName: "VideoPlayerViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -88,6 +115,9 @@ class VideoPlayerViewController: UIViewController {
         
         playPauseBool = true
         
+//        self.view.addSubview(controllerXibViewOutlet)
+        
+        //        forwardButtonOutlet.bringSubview(toFront: self.view)
     }
     
     deinit {
@@ -96,8 +126,9 @@ class VideoPlayerViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view.backgroundColor = .black
-        view.layer.addSublayer(playerLayer)
+//        view.backgroundColor = .yellow
+//        view.layer.addSublayer(playerLayer)
+        
         
     }
     
@@ -107,40 +138,42 @@ class VideoPlayerViewController: UIViewController {
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerLayer.borderColor = UIColor.red.cgColor
         playerLayer.cornerRadius = 10
-        playerLayer.frame = view.bounds
+        //        playerLayer.frame = view.bounds
+        playerLayer.frame = CGRect(x: 50, y: 50, width: 300, height: 300)
         playerLayer.borderWidth = 5
-        playerLayer.backgroundColor = UIColor.blue.cgColor
+        playerLayer.backgroundColor = UIColor.red.cgColor
         playerLayer.masksToBounds = true
         
         
         
         
-        let controlsHeight: CGFloat = 30
-        let controlsY: CGFloat = view.bounds.size.height - controlsHeight
+        
         // Time remaining label
         timeRemainingLabel = UILabel(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
-        timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
+        timeRemainingLabel.frame = CGRect(x: 5, y: 10, width: 60, height: 30)
         timeRemainingLabel.textColor = .red
         
-       
-        view.addSubview(timeRemainingLabel)
+//        view.addSubview(timeRemainingLabel)
         
         
-        seekFiveSecondsFowardButton = UIButton(frame: CGRect(x: 50, y: 100, width: 100, height: 100))
-        seekFiveSecondsBackwardButton = UIButton(frame: CGRect(x: 150, y: 200, width: 100, height: 100))
-        playOrPauseButton = UIButton(frame: CGRect(x: 250, y: 300, width: 100, height: 100))
         
-        seekFiveSecondsFowardButton.setTitle("Forward", for: .normal)
-        seekFiveSecondsBackwardButton.setTitle("Backward", for: .normal)
-        playOrPauseButton.setTitle("PlayPause", for: .normal)
+        //        seekFiveSecondsFowardButton = UIButton(frame: CGRect(x: 50, y: 100, width: 100, height: 100))
+        //        seekFiveSecondsBackwardButton = UIButton(frame: CGRect(x: 150, y: 200, width: 100, height: 100))
+        //        playOrPauseButton = UIButton(frame: CGRect(x: 250, y: 300, width: 100, height: 100))
         
-        seekFiveSecondsFowardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekForward(button:)), for: .touchUpInside)
-        seekFiveSecondsBackwardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekBackward(button:)), for: .touchUpInside)
-        playOrPauseButton.addTarget(self, action: #selector(VideoPlayerViewController.pauseOrPlay(button:)), for: .touchUpInside)
+        //        seekFiveSecondsFowardButton.setTitle("Forward", for: .normal)
+        //        seekFiveSecondsBackwardButton.setTitle("Backward", for: .normal)
+        //        playOrPauseButton.setTitle("PlayPause", for: .normal)
         
-        view.addSubview(seekFiveSecondsFowardButton)
-        view.addSubview(seekFiveSecondsBackwardButton)
-        view.addSubview(playOrPauseButton)
+        //        seekFiveSecondsFowardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekForward(button:elapsedTime:)), for: .touchUpInside)
+        //        seekFiveSecondsBackwardButton.addTarget(self, action: #selector(VideoPlayerViewController.seekBackward(button:elapsedTime:)), for: .touchUpInside)
+        //        playOrPauseButton.addTarget(self, action: #selector(VideoPlayerViewController.pauseOrPlay(button:)), for: .touchUpInside)
+        
+        //        view.addSubview(seekFiveSecondsFowardButton)
+        //        view.addSubview(seekFiveSecondsBackwardButton)
+        //        view.addSubview(playOrPauseButton)
+        
+        
         
     }
     
@@ -159,75 +192,56 @@ class VideoPlayerViewController: UIViewController {
     }
     
     fileprivate func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
-        let timeRemaining: Float64 = CMTimeGetSeconds(player.currentItem!.duration) - elapsedTime
-        timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+        //        let timeRemaining: Float64 = CMTimeGetSeconds(player.currentItem!.duration) - elapsedTime
+        let currentTime = CMTimeGetSeconds((player.currentItem?.currentTime())!)
+        timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(currentTime) / 60) % 60), lround(currentTime) % 60)
         
     }
     
-    // End - Time Remaining Methods
-    
-    
-    //Start - Seeker Methods
-    
-//    @objc private func sliderBeganTracking(slider: UISlider) {
-//        playerRateBeforeSeek = player.rate
-//        player.pause()
-//    }
-//    
-//    @objc fileprivate func sliderEndedTracking(slider: UISlider) {
-//        let videoDuration = CMTimeGetSeconds((player.currentItem?.duration)!)
-//        let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
-//        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
-//        
-//        player.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100), completionHandler: { (completed: Bool) -> Void in
-//            if self.playerRateBeforeSeek > 0 {
-//                self.player.play()
-//            }
-//
-//        })
-//        
-//    }
-//    
-//    @objc fileprivate func sliderValueChanged(slider: UISlider) {
-//        let videoDuration = CMTimeGetSeconds((player.currentItem?.duration)!)
-//        let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
-//        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
-//    }
     
     fileprivate func currentPlayBackTime() -> CMTime {
         return (player.currentItem?.currentTime())!
     }
     
-    @objc fileprivate func seekForward(button: UIButton, elapsedTime: CMTime){
+    fileprivate func seekForward(){
         print(#function)
+        //        let targetTime = CMTimeMake(player.currentItem?.duration, 1)
         
-        self.player.seek(to: CMTime(5))
+        let preSubtractedCurrentTime = CMTimeGetSeconds((player.currentItem?.currentTime())!)
+        let subtractedTime = preSubtractedCurrentTime + 5.0
+        let convertedSubtractedTime = CMTimeMakeWithSeconds(subtractedTime, 1)
+        self.player.seek(to: convertedSubtractedTime)
     }
     
-    @objc fileprivate func seekBackward(button: UIButton, elapsedTime: CMTime){
+    fileprivate func seekBackward(){
         print(#function)
-        
+        let preSubtractedCurrentTime = CMTimeGetSeconds((player.currentItem?.currentTime())!)
+        let subtractedTime = preSubtractedCurrentTime - 5.0
+        let convertedSubtractedTime = CMTimeMakeWithSeconds(subtractedTime, 1)
+        self.player.seek(to: convertedSubtractedTime)
     }
     
-    @objc fileprivate func pauseOrPlay(button: UIButton){
+    fileprivate func pauseOrPlay(){
         print(#function)
-            if playPauseBool == false {
-                playPauseBool = true
-                player.pause()
-            } else if playPauseBool == true {
-                playPauseBool = false
-                player.play()
-            }
+        if playPauseBool == false {
+            playPauseBool = true
+            player.pause()
+        } else if playPauseBool == true {
+            playPauseBool = false
+            player.play()
+        }
     }
     
     
     //End - Seeker Methods
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    
     //[END - METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
 }
