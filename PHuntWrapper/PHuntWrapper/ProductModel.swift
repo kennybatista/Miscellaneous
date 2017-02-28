@@ -10,10 +10,10 @@ import Foundation
 class ProductModel {
     var productName: String!
     var productTagline: String!
-    var productNumberOfVotes: Int!
+    var productNumberOfVotes: String!
     var productThumbnail: String!
     
-    init?(productName: String?, productTagline: String?, productNumberOfVotes: Int?, productThumbnail: String?) {
+    init?(productName: String?, productTagline: String?, productNumberOfVotes: String?, productThumbnail: String?) {
         
         if productName != nil {
             self.productName = productName

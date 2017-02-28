@@ -15,6 +15,7 @@
 		2528BF0B1E5240C300D613DC /* PHuntWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528BF0A1E5240C300D613DC /* PHuntWrapperTests.swift */; };
 		2528BF161E5240C300D613DC /* PHuntWrapperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528BF151E5240C300D613DC /* PHuntWrapperUITests.swift */; };
 		25AD3B011E5E61510076EA8F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD3B001E5E61510076EA8F /* ProductModel.swift */; };
+		25FBD7F01E64DC290076537A /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBD7EF1E64DC280076537A /* ProductTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		2528BF171E5240C300D613DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AD3B001E5E61510076EA8F /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		25FBD7A21E60BF640076537A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		25FBD7EF1E64DC280076537A /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +104,9 @@
 			children = (
 				2528BEF51E5240C300D613DC /* AppDelegate.swift */,
 				25FBD7A21E60BF640076537A /* MyPlayground.playground */,
-				2528BEF71E5240C300D613DC /* ViewController.swift */,
-				25AD3B001E5E61510076EA8F /* ProductModel.swift */,
-				2528BEF91E5240C300D613DC /* Main.storyboard */,
+				25FBD7F31E64F4A80076537A /* Controller */,
+				25FBD7F21E64F4980076537A /* View */,
+				25FBD7F11E64F48C0076537A /* Model */,
 				2528BEFC1E5240C300D613DC /* Assets.xcassets */,
 				2528BEFE1E5240C300D613DC /* LaunchScreen.storyboard */,
 				2528BF011E5240C300D613DC /* Info.plist */,
@@ -128,6 +130,31 @@
 				2528BF171E5240C300D613DC /* Info.plist */,
 			);
 			path = PHuntWrapperUITests;
+			sourceTree = "<group>";
+		};
+		25FBD7F11E64F48C0076537A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25AD3B001E5E61510076EA8F /* ProductModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		25FBD7F21E64F4980076537A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25FBD7EF1E64DC280076537A /* ProductTableViewCell.swift */,
+				2528BEF91E5240C300D613DC /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		25FBD7F31E64F4A80076537A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2528BEF71E5240C300D613DC /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2528BEF81E5240C300D613DC /* ViewController.swift in Sources */,
+				25FBD7F01E64DC290076537A /* ProductTableViewCell.swift in Sources */,
 				25AD3B011E5E61510076EA8F /* ProductModel.swift in Sources */,
 				2528BEF61E5240C300D613DC /* AppDelegate.swift in Sources */,
 			);
