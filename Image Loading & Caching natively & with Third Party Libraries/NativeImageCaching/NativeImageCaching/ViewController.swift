@@ -32,15 +32,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         task = session.downloadTask(with: url, completionHandler: { (location: URL?, response: URLResponse?, error: Error?) -> Void in
             
             if location != nil{
-                let data:Data! = try? Data(contentsOf: location!)
-                do{
+                let data: Data! = try? Data(contentsOf: location!)
+                do {
                     let dic = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as AnyObject
                     self.tableData = dic.value(forKey : "results") as? [AnyObject]
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }
-                }catch{
+                } catch{
                     print("something went wrong, try again")
                 }
             }
@@ -49,6 +49,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
 
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.tableData.count
     }
@@ -56,16 +60,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
-        let dictionary = self.tableData[(indexPath as NSIndexPath).row] as! [String:AnyObject]
+        let dictionary = self.tableData[(indexPath as NSIndexPath).row] as! [String: AnyObject]
 
         if self.cache.object(forKey: indexPath.row as AnyObject) != nil {
             // Use cache
             print("Cached image used, no need to download it")
             cell.mainImageView.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
-        }else{
+        } else {
             
             let artworkUrl = dictionary["artworkUrl100"] as! String
-            let url:URL! = URL(string: artworkUrl)
+            let url: URL! = URL(string: artworkUrl)
             
             task = session.downloadTask(with: url, completionHandler: { (location, response, error) -> Void in
             if let data = try? Data(contentsOf: url){

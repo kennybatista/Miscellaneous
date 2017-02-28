@@ -11,7 +11,7 @@ import AVFoundation
 
 
 
-class VideoPlayerViewController: UIViewController {
+class UICustomKennyVideoPlayer: UIViewController {
     
     // [Start of - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
     
@@ -79,13 +79,13 @@ class VideoPlayerViewController: UIViewController {
     
  
     
-    init(urlPasser: URL){
-        self.url = URL(string: String(describing: urlPasser))
+    init(urlToPlayMediaFrom: URL){
+        self.url = URL(string: String(describing: urlToPlayMediaFrom))
         self.asset = AVURLAsset(url: url)
         self.item = AVPlayerItem(asset: asset)
         self.player = AVPlayer(playerItem: item)
         self.playerLayer = AVPlayerLayer(player: player)
-        super.init(nibName: "VideoPlayerViewController", bundle: nil)
+        super.init(nibName: "UICustomKennyVideoPlayerView", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

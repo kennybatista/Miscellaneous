@@ -133,7 +133,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taglineLabel.text = productModelArray[indexPath.row].productTagline
         cell.numberOfVotesLabel.text = productModelArray[indexPath.row].productNumberOfVotes
         
-        
+        cell.thumbnailImageView.layer.cornerRadius = 10.0
+        cell.numberOfVotesLabel.layer.cornerRadius = 10.0
         
         if cache.object(forKey: indexPath.row as AnyObject) != nil {
             print("Already cached, load from memory instead of downloading")
