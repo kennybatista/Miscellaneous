@@ -9,76 +9,89 @@
 import UIKit
 import AVFoundation
 
-
-
 class UICustomKennyVideoPlayer: UIViewController {
     
-    // [Start of - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
-    
-    //url to get media from
+//[Principium: Media playback properties]
+    //url to get media from, media could either be on a remote server or locally
     fileprivate var url: URL!
     
-    // convert url to an asset
+    // On initialization, it will instantiate the url into an AV asset
     fileprivate var asset: AVURLAsset!
     
-    // make asset into an item
+    // On initialization, it will convert the asset into a PlayerItem that can be passed to an AVPlayer for playback
     fileprivate var item: AVPlayerItem!
     
-    // player
+    // player, will playback media when specified
     fileprivate var player: AVPlayer!
     
-    //player layer
+    //player layer, used to modify attributes such as corner radius
     fileprivate var playerLayer: AVPlayerLayer!
     
-    // Time Remaining
+    // This view will contain the layer ( which displays the media ) that receives the output from the player
+    @IBOutlet weak var videoProgressContainerView: UIView!
+    
+    
+    @IBOutlet weak var VideoPlayerView: UIView!
+//[Finis: Media playback properties]
+    
+    
+    
+    
+    
+    
+//[Principium: Time properties]
+    // Will contain the media's playback remaining time
     fileprivate var timeObserver: AnyObject!
 
-    
+    // Will display the remaining time when instantiated
     @IBOutlet weak var timeRemainingLabel: UILabel!
-    // Seeker buttons
-    @IBOutlet weak var videoPlayerContainerView: UIView!
     
-    var playerRateBeforeSeek: Float = 0
+    // This progress view will display the current elapsed time
+    @IBOutlet weak var progressView: UIProgressView!
+//[Finis: Time/Progress properties]
     
     
     
+
+    
+    
+//[Principium: Playback controls properties/methods]
+    
+    // The following three outlets below are used to bring the subviews above the player layer
     @IBOutlet weak var backwardsButtonOutlet: UIButton!
     
     @IBOutlet weak var playOrPauseButtonOutlet: UIButton!
     
     @IBOutlet weak var forwardButtonOutlet: UIButton!
     
-    @IBOutlet weak var progressView: UIProgressView!
+    // Will allow the compiler to decide wether to play or pause the media when play/pause button is tapped
+    var playPauseBool: Bool!
+// -------------------------------------------
     
-    
-    
+    // Goes back 5 seconds in media when tapped
     @IBAction func seekFiveSecondsBackwardButton(_ sender: Any) {
         seekBackward()
     }
     
+    // Pauses/Plays media when tapped
     @IBAction func playOrPauseButton(_ sender: Any) {
         pauseOrPlay()
     }
     
+    
+    
+    // Goes forward 5 seconds in media when tapped
     @IBAction func seekFiveSecondsForwardButton(_ sender: Any) {
         seekForward()
     }
     
-    var playPauseBool: Bool!
     
-    @IBOutlet weak var VideoPlayerView: UIView!
+//[Finis: Playback controls properties/methods]
+   
     
     
  
-    
-    
-    // [End - Properties] ---------Properties-----------Properties-------------Properties---------------Properties----------
-    
-    
-    //START - [METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
-    
- 
-    
+    // Initialize objects
     init(urlToPlayMediaFrom: URL){
         self.url = URL(string: String(describing: urlToPlayMediaFrom))
         self.asset = AVURLAsset(url: url)
@@ -93,84 +106,81 @@ class UICustomKennyVideoPlayer: UIViewController {
     }
     
     
-    
+//[Principium: Loading views method/properties]
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Run the load view method
         loadView()
+        
+        // Play media once view loads to memory
         player.play()
-        
-        timeRemainingLabel.layer.cornerRadius = 10
-        
-        // time remaining
-        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
-        timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main, using: {
-            elapsedTime in
-            print("elapsedTime now", CMTimeGetSeconds(elapsedTime))
-            self.observeTime(elapsedTime: elapsedTime)
-            
-        }) as AnyObject!
-        
-        
+        // We set the bool to false, so that when we tap on the pause/play button the compiler decides
         playPauseBool = false
         
-       
+        
+        // This property will be used to elapse time by second
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        
+        // We use an observer to watch playback seconds
+        timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main, using: {
+            elapsedTime in
+            // We print the elapsed time
+            print("elapsedTime now", CMTimeGetSeconds(elapsedTime))
+            // We pass the elapsed seconds to the observer method, which we'll use to update time remaining labels/ progress
+            self.observeTime(elapsedTime: elapsedTime)
+        }) as AnyObject!
     }
     
-    deinit {
-        player.removeTimeObserver(timeObserver)
-    }
+    
     
     override func loadView() {
         super.loadView()
         
+        // This view will contain the playing video layer
         VideoPlayerView.layer.addSublayer(playerLayer)
+        // We make it's background color clear so that we only display
         VideoPlayerView.backgroundColor = UIColor.clear
         
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
+        // Set video player properties
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerLayer.cornerRadius = 10
         playerLayer.frame = VideoPlayerView.bounds
         playerLayer.backgroundColor = UIColor.clear.cgColor
+        playerLayer.cornerRadius = 10
         playerLayer.masksToBounds = true
         
-        
-        playOrPauseButtonOutlet.bringSubview(toFront: self.view)
-        backwardsButtonOutlet.bringSubview(toFront: self.view)
-        forwardButtonOutlet.bringSubview(toFront: self.view)
-        
-        //add to subview
+        // Add UI objects to the subview
         VideoPlayerView.addSubview(timeRemainingLabel)
         VideoPlayerView.addSubview(forwardButtonOutlet)
         VideoPlayerView.addSubview(backwardsButtonOutlet)
         VideoPlayerView.addSubview(playOrPauseButtonOutlet)
-        VideoPlayerView.addSubview(videoPlayerContainerView)
-        videoPlayerContainerView.layer.cornerRadius = 7
-        videoPlayerContainerView.addSubview(progressView)
+        VideoPlayerView.addSubview(videoProgressContainerView)
+        videoProgressContainerView.layer.cornerRadius = 7
+        videoProgressContainerView.addSubview(progressView)
         
         //Shadows
         VideoPlayerView.layer.shadowColor = UIColor.black.cgColor
         VideoPlayerView.layer.shadowOpacity = 0.7
         VideoPlayerView.layer.shadowOffset = CGSize.zero
         VideoPlayerView.layer.shadowRadius = 5
-  
+
     }
+//[Finis: Loading views method/properties]
     
     
-    // Start - Time Remaining Methods
     
     
+//[Principium: Time obeserving/updating method/properties]
     fileprivate func observeTime(elapsedTime: CMTime) {
+        // Media duration
         let duration = CMTimeGetSeconds((player.currentItem?.duration)!)
+        
+        // Turn the CMTime passed in into seconds
         let elapsedTime = CMTimeGetSeconds(elapsedTime)
         
-        //updtae time label
+        // Update time label
         updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
         
-        //track progresss
+        // Track progresss on the progress view
         progressView.progress = Float(elapsedTime / duration)
         
     }
@@ -181,15 +191,15 @@ class UICustomKennyVideoPlayer: UIViewController {
         timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(currentTime) / 60) % 60), lround(currentTime) % 60)
         
     }
-    
-    
+//[Finis: Time obeserving/updating method/properties]
+
+//[Principium: Playback controls method/properties]
     fileprivate func currentPlayBackTime() -> CMTime {
         return (player.currentItem?.currentTime())!
     }
     
     fileprivate func seekForward(){
         print(#function)
-        //        let targetTime = CMTimeMake(player.currentItem?.duration, 1)
         
         let preSubtractedCurrentTime = CMTimeGetSeconds((player.currentItem?.currentTime())!)
         let subtractedTime = preSubtractedCurrentTime + 5.0
@@ -199,6 +209,7 @@ class UICustomKennyVideoPlayer: UIViewController {
     
     fileprivate func seekBackward(){
         print(#function)
+        
         let preSubtractedCurrentTime = CMTimeGetSeconds((player.currentItem?.currentTime())!)
         let subtractedTime = preSubtractedCurrentTime - 5.0
         let convertedSubtractedTime = CMTimeMakeWithSeconds(subtractedTime, 1)
@@ -217,17 +228,5 @@ class UICustomKennyVideoPlayer: UIViewController {
             player.play()
         }
     }
-    
-    
-    //End - Seeker Methods
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    //[END of - METHODS ----------METHODS------------------------METHODS---------------------METHODS--------------------------- ]
+//[Finis: Playback controls method/properties]
 }

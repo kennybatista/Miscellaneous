@@ -9,15 +9,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoPlayerViewController" customModule="VideoCamera" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UICustomKennyVideoPlayer" customModule="VideoCamera" customModuleProvider="target">
             <connections>
-                <outlet property="VideoPlayerView" destination="P5l-Zb-y6b" id="v41-3C-9Xs"/>
-                <outlet property="backwardsButtonOutlet" destination="oSc-c6-EpG" id="Au9-Gr-Q3S"/>
-                <outlet property="forwardButtonOutlet" destination="goK-LA-9uM" id="LlC-Ey-jmr"/>
-                <outlet property="playOrPauseButtonOutlet" destination="I5R-CY-3cV" id="0El-Xf-wuS"/>
-                <outlet property="progressView" destination="NTQ-bq-iA3" id="5zI-vN-sWx"/>
-                <outlet property="timeRemainingLabel" destination="aBC-Cq-P6O" id="FkA-30-JW5"/>
-                <outlet property="videoPlayerContainerView" destination="1Rq-Wn-hJU" id="szd-a7-x3Z"/>
+                <outlet property="VideoPlayerView" destination="P5l-Zb-y6b" id="rUj-Dx-Avg"/>
+                <outlet property="backwardsButtonOutlet" destination="oSc-c6-EpG" id="fdg-5g-ZF7"/>
+                <outlet property="forwardButtonOutlet" destination="goK-LA-9uM" id="zEa-IT-5wW"/>
+                <outlet property="playOrPauseButtonOutlet" destination="I5R-CY-3cV" id="sm8-Fg-B6v"/>
+                <outlet property="progressView" destination="NTQ-bq-iA3" id="dEt-2b-hph"/>
+                <outlet property="timeRemainingLabel" destination="aBC-Cq-P6O" id="BT7-bw-Yxe"/>
+                <outlet property="videoProgressContainerView" destination="1Rq-Wn-hJU" id="Xu8-aT-h9b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,9 +33,9 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5R-CY-3cV">
                             <rect key="frame" x="156" y="501" width="20" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="Play"/>
+                            <state key="normal" image="Pause"/>
                             <connections>
-                                <action selector="playOrPauseButton:" destination="-1" eventType="touchUpInside" id="92G-zV-3Zw"/>
+                                <action selector="playOrPauseButton:" destination="-1" eventType="touchUpInside" id="So0-4o-adp"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goK-LA-9uM">
@@ -81,7 +81,7 @@
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.81691408160000001" green="0.111945428" blue="0.10684419420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE2-2v-tZS">
                     <rect key="frame" x="13" y="19" width="23" height="21"/>
@@ -123,6 +123,6 @@
     <resources>
         <image name="Backward" width="403" height="206"/>
         <image name="Forward" width="401" height="206"/>
-        <image name="Play" width="198" height="233"/>
+        <image name="Pause" width="198" height="233"/>
     </resources>
 </document>

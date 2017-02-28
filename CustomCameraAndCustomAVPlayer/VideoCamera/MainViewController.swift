@@ -7,16 +7,11 @@
 //
 
 import UIKit
-//record, edit, audio and visual
 import AVFoundation
-//controls video output such as user controls and captions
 import AVKit
 
 class MainViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
-    
-    
-    
     @IBOutlet weak var cameraButton: UIButton!
     
      @IBOutlet weak var switchCamOutlet: UIButton!
