@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     var productModelArray = [ProductModel]()
@@ -89,12 +88,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 let votesCount = post["votes_count"]!!
                                 let thumbnailDictionary: AnyObject = (post["thumbnail"] as AnyObject)
                                 let link = thumbnailDictionary["image_url"]!!
+                                let productID = post["id"]!!
                                 
-                                self.productModelArray.append(ProductModel(productName: String(describing: name), productTagline: String(describing: tagline), productNumberOfVotes: String(describing: votesCount), productThumbnail: String(describing: link))!)
+                                self.productModelArray.append(ProductModel(productName: String(describing: name), productTagline: String(describing: tagline), productNumberOfVotes: String(describing: votesCount), productThumbnail: String(describing: link), productID: String(describing: productID))!)
                                 
-                                for product in self.productModelArray {
-                                    print(product.productThumbnail)
-                                }
+//                                for product in self.productModelArray {
+//                                    print(product.productID)
+//                                }
+                                
+                                
+                                //Request for comments
                                 
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
@@ -137,7 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.numberOfVotesLabel.layer.cornerRadius = 10.0
         
         if cache.object(forKey: indexPath.row as AnyObject) != nil {
-            print("Already cached, load from memory instead of downloading")
+//            print("Already cached, load from memory instead of downloading")
             cell.thumbnailImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
             
         } else {
@@ -155,15 +158,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 
-                
-                
-                
-                
             })
             task.resume()
         }
         
         return cell
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! DetailTableViewController
+                destinationController.receivedID = self.productModelArray[indexPath.row].productID
+
+            }
+        }
     }
     
     

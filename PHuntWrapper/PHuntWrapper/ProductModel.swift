@@ -12,8 +12,9 @@ class ProductModel {
     var productTagline: String!
     var productNumberOfVotes: String!
     var productThumbnail: String!
+    var productID: String!
     
-    init?(productName: String?, productTagline: String?, productNumberOfVotes: String?, productThumbnail: String?) {
+    init?(productName: String?, productTagline: String?, productNumberOfVotes: String?, productThumbnail: String?, productID: String?) {
         
         if productName != nil {
             self.productName = productName
@@ -37,6 +38,12 @@ class ProductModel {
             self.productThumbnail = productThumbnail
         } else {
             print(productThumbnail!, " is nil")
+        }
+        
+        if productID != nil {
+            self.productID = productID
+        } else {
+            print(productID!, " is nil")
         }
   
     }

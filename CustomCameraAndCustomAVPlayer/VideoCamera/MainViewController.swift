@@ -231,7 +231,7 @@ class MainViewController: UIViewController, AVCaptureFileOutputRecordingDelegate
         
         let testLink = URL(string: "https://firebasestorage.googleapis.com/v0/b/vlogr-9384d.appspot.com/o/Videos%2F2017-02-17%2023:33:36%20%2B0000.MOV?alt=media&token=131e44a7-868a-43aa-987d-e35e4f6acaca")
         // When finished recording, pass the file url to our modular video component and play it
-        let videoPlayer = UICustomKennyVideoPlayer(urlToPlayMediaFrom: testLink!)
+        let videoPlayer = KBVideoPlayerViewController(urlToPlayMediaFrom: testLink!)
         
         
         present(videoPlayer, animated: true, completion: nil)
