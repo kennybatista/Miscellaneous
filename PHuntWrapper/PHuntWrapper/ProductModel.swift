@@ -14,7 +14,8 @@ class ProductModel {
     var productThumbnail: String!
     var productID: String!
     
-    init?(productName: String?, productTagline: String?, productNumberOfVotes: String?, productThumbnail: String?, productID: String?) {
+    init?(productName: String?, productTagline: String?, productNumberOfVotes: String?, productThumbnail: String?, productID: String?)
+    {
         
         if productName != nil {
             self.productName = productName

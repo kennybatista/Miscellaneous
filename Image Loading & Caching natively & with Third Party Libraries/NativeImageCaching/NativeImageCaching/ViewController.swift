@@ -76,7 +76,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 
                 DispatchQueue.main.async {
                     
-                    let img:UIImage! = UIImage(data: data)
+                    let img: UIImage! = UIImage(data: data)
                     cell.mainImageView.image = img
                     self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
                     
