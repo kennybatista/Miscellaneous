@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6146E99BF4C127DC2EC2F1295229302CB0C6FF31",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6146E99BF4C127DC2EC2F1295229302CB0C6FF31" : 9223372036854775807,
+    "0BC2DAE497B6F85F13BE92537EDB8A7DFD4FB66D" : 0,
+    "4F201322DFCBE25D8D43B7E20BE17D99A7146515" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "70371CB8-30A7-4B09-B459-A396F183FB34",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6146E99BF4C127DC2EC2F1295229302CB0C6FF31" : "iOS-GifMe\/",
+    "0BC2DAE497B6F85F13BE92537EDB8A7DFD4FB66D" : "gifme",
+    "4F201322DFCBE25D8D43B7E20BE17D99A7146515" : "Gifu\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "gifme",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "gifme.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:buzzfeed\/gifme.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0BC2DAE497B6F85F13BE92537EDB8A7DFD4FB66D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:kaishin\/Gifu.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4F201322DFCBE25D8D43B7E20BE17D99A7146515"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:buzzfeed\/iOS-GifMe.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6146E99BF4C127DC2EC2F1295229302CB0C6FF31"
+    }
+  ]
+}
