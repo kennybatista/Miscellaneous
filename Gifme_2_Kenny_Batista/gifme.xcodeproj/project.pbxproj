@@ -187,8 +187,8 @@
 				556F87F61A8D3B1000146FA9 /* External (Ignore me!) */,
 				5557B3F71A8D1AD200DCBBBD /* Model */,
 				5557B3F31A8D12D100DCBBBD /* Network */,
-				556F87F21A8D36A500146FA9 /* Views */,
 				555353C01A8D069100DC19CE /* View Controllers */,
+				556F87F21A8D36A500146FA9 /* Views */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
