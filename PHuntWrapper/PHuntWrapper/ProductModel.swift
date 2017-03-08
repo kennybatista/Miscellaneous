@@ -23,6 +23,7 @@ class ProductModel {
             print(productName!, " is nil")
         }
         
+        
         if productTagline != nil {
             self.productTagline = productTagline
         } else {
