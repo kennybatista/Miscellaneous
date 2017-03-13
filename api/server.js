@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 app.use('/api', require('./routes/api'));
 
 
+
+
+
 // Start server
 app.listen(3004);
 console.log('API is running on port 3004');
