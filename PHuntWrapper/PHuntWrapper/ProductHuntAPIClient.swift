@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+typealias CallCompletion = (CallResponse) -> Void
+
+enum CallResponse {
+    case success(CallResponseData)
+    case failure(Error)
+}
+
+struct CallResponseData {
+    public let results: [ProductModel]
+}

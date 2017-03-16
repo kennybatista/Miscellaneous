@@ -78,34 +78,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     if let json = try JSONSerialization.jsonObject(with: dataReceived, options: .allowFragments) as? [String: [AnyObject]] {
                         
-                        if let posts = json["posts"] {
-                            let flatMappedPosts = posts.flatMap { $0 }
-                            
-                            
-                            for post in flatMappedPosts {
-                                let name = post["name"]!!
-                                let tagline = post["tagline"]!!
-                                let votesCount = post["votes_count"]!!
-                                let thumbnailDictionary: AnyObject = (post["thumbnail"] as AnyObject)
-                                let link = thumbnailDictionary["image_url"]!!
-                                let productID = post["id"]!!
-                                
-                                self.productModelArray.append(ProductModel(productName: String(describing: name), productTagline: String(describing: tagline), productNumberOfVotes: String(describing: votesCount), productThumbnail: String(describing: link), productID: String(describing: productID))!)
-                                
-//                                for product in self.productModelArray {
-//                                    print(product.productID)
+//                        if let posts = json["posts"] {
+//                            let flatMappedPosts = posts.flatMap { $0 }
+//                            
+//                            
+//                            for post in flatMappedPosts {
+//                                let name = post["name"]!!
+//                                let tagline = post["tagline"]!!
+//                                let votesCount = post["votes_count"]!!
+//                                let thumbnailDictionary: AnyObject = (post["thumbnail"] as AnyObject)
+//                                let link = thumbnailDictionary["image_url"]!!
+//                                let productID = post["id"]!!
+//                                
+//                                self.productModelArray.append(ProductModel(productName: String(describing: name), productTagline: String(describing: tagline), productNumberOfVotes: String(describing: votesCount), productThumbnail: String(describing: link), productID: String(describing: productID))!)
+//                                
+////                                for product in self.productModelArray {
+////                                    print(product.productID)
+////                                }
+//                                
+//                                
+//                                //Request for comments
+//                                
+//                                DispatchQueue.main.async {
+//                                    self.tableView.reloadData()
 //                                }
-                                
-                                
-                                //Request for comments
-                                
-                                DispatchQueue.main.async {
-                                    self.tableView.reloadData()
-                                }
-                                
-                            }
-
-                        }
+//                                
+//                            }
+//
+//                        }
                         
                     } else {
                         print(error!)
