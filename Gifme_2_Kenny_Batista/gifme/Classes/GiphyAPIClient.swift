@@ -30,10 +30,7 @@ class GMGiphyAPIClient {
     }
 
     func fetchTrendingGifs(_ completion: @escaping GiphyCompletion) {
-        if
-            let baseURL = URL(string: baseURLString),
-            let url = URL(string: "trending", relativeTo: baseURL)
-        {
+        if let baseURL = URL(string: baseURLString), let url = URL(string: "trending", relativeTo: baseURL) {
             fetchGifs(with: url, completion: completion)
         }
     }
@@ -75,7 +72,6 @@ class GMGiphyAPIClient {
                     }
                 }
             }).resume()
-            
         }
     }
 }

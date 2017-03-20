@@ -24,8 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //url components
     var urlComponents: URLComponents!
-    var accessTokenParamter: String!
-    var accessTokenKey: String!
+//    var accessTokenParamter: String!
+//    var accessToKey: String!
     
     var url: URL!
     
@@ -48,9 +48,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         url = urlComponents.url
         
         
-        //access token
-        accessTokenParamter = "?access_token="
-        accessTokenKey = "4d9636f7aebba4999289001cfcfc0414921b5305418bfad6b64136ab06b5ba05"
+//        //access token
+//        accessTokenParamter = "?access_token="
+//        accessToKey = "4d9636f7aebba4999289001cfcfc0414921b5305418bfad6b64136ab06b5ba05"
         
         
         
