@@ -1,6 +1,0 @@
-framework module Pods_AlamofireImageCachingTests {
-  umbrella header "Pods-AlamofireImageCachingTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module Pods_iOSSeminarChallenge {
-  umbrella header "Pods-iOSSeminarChallenge-umbrella.h"
-
-  export *
-  module * { export * }
-}
